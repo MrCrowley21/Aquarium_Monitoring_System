@@ -54,13 +54,6 @@ class User(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE)
-    phone = models.CharField(max_length=20, blank=True)
-    location = models.CharField(max_length=10, blank=True)
-    credit_details = models.CharField(max_length=16, blank=True)
-    image = models.ImageField(upload_to='IMG/', blank=True)
-    date_of_birth = models.DateField(blank = True,default=None)
-    rating = models.PositiveIntegerField(blank=True,default=0)
-    public_key = models.CharField(max_length=300, blank=True)
 
 
 @receiver(post_save, sender=User)
@@ -76,7 +69,7 @@ class Aquarium(models.Model):
     length = models.FloatField()
     width = models.FloatField()
     height = models.FloatField()
-    sensors = models.ManyToManyField('Environment')
+    # sensors = models.ManyToManyField('Environment')
     water_level = models.FloatField()
     general_system_state = models.FloatField()
 
@@ -90,4 +83,3 @@ class Fish(models.Model):
 
 class Food(models.Model):
     food_type = models.CharField(max_length=100)
-
