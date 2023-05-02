@@ -65,10 +65,12 @@ def create_user_profile(sender, instance, created, **kwargs):
 class Aquarium(models.Model):
     code = models.ForeignKey('UserProfile', on_delete=models.PROTECT)
     nickname = models.CharField(max_length=100)
+    fish_id = models.ForeignKey('Fish', on_delete=models.PROTECT)
     volume = models.FloatField()
     length = models.FloatField()
     width = models.FloatField()
     height = models.FloatField()
+    feeding_time = models.DateTimeField()
     # sensors = models.ManyToManyField('Environment')
     water_level = models.FloatField()
     general_system_state = models.FloatField()
